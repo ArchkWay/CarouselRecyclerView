@@ -3,6 +3,7 @@ package supahsoftware.androidexamplecarousel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat.setChildrenDrawingOrderEnabled
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 

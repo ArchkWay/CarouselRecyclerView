@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         item_list.initialize(itemAdapter)
-        item_list.setViewsToChangeColor(listOf(R.id.list_item_background, R.id.list_item_text))
+//        item_list.setViewsToChangeColor(listOf(R.id.list_item_background, R.id.list_item_text))
         itemAdapter.setItems(getLargeListOfItems())
     }
 
