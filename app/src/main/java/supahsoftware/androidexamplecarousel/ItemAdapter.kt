@@ -15,13 +15,14 @@ class ItemAdapter(val itemClick: (position:Int,item:Item) -> Unit) : RecyclerVie
         ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(items[position])
+        val positionExt = position % items.size
+        holder.bind(items[positionExt])
         holder.itemView.setOnClickListener {
             itemClick(position,items[position])
         }
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = items.size *2
 
     fun setItems(newItems: List<Item>) {
         items = newItems
