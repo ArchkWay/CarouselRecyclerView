@@ -2,6 +2,7 @@ package supahsoftware.androidexamplecarousel
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Pos ${position}", Toast.LENGTH_LONG).show()
             item_list.smoothScrollToPosition(position)
         } }
-    private val possibleItems = listOf(
+    private var possibleItems = listOf(
         Item("Airplanes", R.drawable.ic_airplane),
         Item("Cars", R.drawable.ic_car),
         Item("Food", R.drawable.ic_food),
@@ -28,11 +29,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        for(vali in  0..10){
+            possibleItems = possibleItems + possibleItems
+        }
+        Log.d("__", possibleItems.size.toString())
         item_list.initialize(itemAdapter)
 //        item_list.setViewsToChangeColor(listOf(R.id.list_item_background, R.id.list_item_text))
-        itemAdapter.setItems(getLargeListOfItems())
-        autoScroll(item_list)
+        itemAdapter.setItems(possibleItems)
+//        autoScroll(item_list)
     }
 
     private fun getLargeListOfItems(): List<Item> {
@@ -52,6 +56,7 @@ fun autoScroll(recyclerView: RecyclerView) {
     }
     handler.postDelayed(runnable, 0)
 }
+
 data class Item(
     val title: String,
     @DrawableRes val icon: Int

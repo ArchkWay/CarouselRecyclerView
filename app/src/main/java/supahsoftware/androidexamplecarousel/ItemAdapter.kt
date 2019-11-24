@@ -3,7 +3,6 @@ package supahsoftware.androidexamplecarousel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat.setChildrenDrawingOrderEnabled
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 
@@ -17,6 +16,7 @@ class ItemAdapter(val itemClick: (position:Int,item:Item) -> Unit) : RecyclerVie
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val positionExt = position % items.size
         holder.bind(items[positionExt])
+        holder.setIsRecyclable(false)
         holder.itemView.setOnClickListener {
             itemClick(position,items[position])
         }
